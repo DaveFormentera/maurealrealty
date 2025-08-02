@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vertex Coast - Project Details</title>
+  <link rel="shortcut icon" href="faviconMR.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e0f2f1, #ffffff);
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    nav {
+      background: #004e7c;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #004e7c;
+      color: white;
+      padding: 5px 5px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .image-banner {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      transition: transform 0.4s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-banner:hover {
+      transform: scale(1.02);
+    }
+
+    .section {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-4px);
+    }
+
+    h2 {
+      color: #004e7c;
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .cta {
+      background: #004e7c;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      border-radius: 12px;
+      font-size: 20px;
+      margin-top: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .amenity-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .amenity-gallery img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .amenity-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      .cta {
+        font-size: 18px;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      p, ul li {
+        font-size: 15px;
+      }
+
+      .cta {
+        font-size: 16px;
+      }
+    }
+    /* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.lightbox .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.lightbox .close-btn:hover {
+  color: #ccc;
+}
+.button {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .download-btn {
+    display: inline-block;
+    background: linear-gradient(to bottom, rgb(7, 87, 7), rgb(49, 218, 49));
+    color: white;
+    padding: 12px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background 0.3s ease;
+  }
+
+  .download-btn:hover {
+    background-color: #004d40;
+  }
+
+
+  </style>
+</head>
+
+<div id="lightbox" class="lightbox">
+  <span class="close-btn">&times;</span>
+  <img id="lightbox-img" src="" alt="Full Image">
+</div>
+
+<body>
+
+  <nav>
+    <a href="index.html">← Back to Home</a>
+    <a href="#amenities">Amenities</a>
+  </nav>
+
+  <header>
+    <h1>Vertex Coast</h1>
+    <p>Your Smart Investment by the Sea</p>
+  </header>
+
+  <div class="container">
+    <img src="vertex1 (2).png" alt="Vertex Coast" class="image-banner" />
+
+    <div class="section">
+      <h2>🏝 Location</h2>
+      <p><strong>Punta Engaño, Lapu-Lapu City, Mactan Island, Cebu</strong> — a luxurious and strategic location near resorts, the airport, and Cebu’s vibrant city life.</p>
+      <ul>
+        <li>3 mins walk to the Coast</li>
+        <li>5 mins drive to local markets</li>
+        <li>16 mins to Mactan-Cebu International Airport</li>
+        <li>25–46 mins to top hospitals, golf clubs & Cebu City</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📊 Project Highlights</h2>
+      <ul>
+        <li><strong>Developer:</strong> Priland Development Corporation</li>
+        <li>🏢 2 Towers • 27 Floors • 735 Units</li>
+        <li>🚧 Construction Start: Q2 2025</li>
+        <li>🏁 Turnover: Q4 2028</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🏠 Unit Types & Sizes</h2>
+      <ul>
+        <li>Studio: 21.80 – 34.65 sq. m.</li>
+        <li>1-Bedroom: 34.55 – 62.25 sq. m.</li>
+        <li>2-Bedroom: 57.30 – 73.50 sq. m.</li>
+        <li>SOHO Units: 23.00 – 62.25 sq. m.</li>
+      </ul>
+    </div>
+
+    <div class="section" id="amenities">
+        <h2>🎯 Amenities</h2>
+
+        <div class="amenity-gallery">
+            <img src="pool.png" alt="Infinity Pool">
+            <img src="commercial.png" alt="Commercial Space">
+            <img src="gym.png" alt="Gym">
+            <img src="garden.png" alt="Garden Deck">
+            <img src="gameroom.png" alt="Game Room">
+            <img src="functionroom.png" alt="Function Room">
+        </div>
+
+        <ul>
+            <li>Infinity Pool, Kiddie Pool</li>
+            <li>Fully-equipped Gym & Game Room</li>
+            <li>Garden Deck & Function Room</li>
+            <li>Commercial Areas & Spacious Lobbies</li>
+            <li>Basement & Podium Parking</li>
+        </ul>
+    </div>
+
+
+    <div class="section">
+      <h2>✨ Why Choose Vertex Coast?</h2>
+      <p>
+        Whether you’re buying a vacation home, a retirement condo, or an investment unit for rental income — Vertex Coast delivers unmatched value, location, and potential. A truly wise choice on a booming island.
+      </p>
+    </div>
+
+    <div class="cta">
+      💬 Inquire now for showroom availability or to schedule a site visit at Punta Engaño.
+    </div>
+      <center>
+        <div style="margin-top: 20px; margin-bottom: -15px;">
+            If you want to see the full details download it right here.
+        </div>
+      </center>  
+        <div class="button">
+          <a href="vertex.pdf" download class="download-btn">📥 Download Brochure</a>
+        </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 Vertex Coast | Priland Development Corp. | All rights reserved.
+  </footer>
+
+</body>
+</html>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close-btn');
+
+  document.querySelectorAll('.amenity-gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  // Close on outside click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+</script>
